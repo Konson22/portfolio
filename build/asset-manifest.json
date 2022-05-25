@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bc696c8a.chunk.css",
+    "main.js": "/static/js/main.04d77641.chunk.js",
+    "main.js.map": "/static/js/main.04d77641.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.69f103b6.js",
+    "runtime-main.js.map": "/static/js/runtime-main.69f103b6.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.af1c3cf4.chunk.js": "/static/js/2.af1c3cf4.chunk.js",
+    "static/js/2.af1c3cf4.chunk.js.map": "/static/js/2.af1c3cf4.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.bc696c8a.chunk.css.map": "/static/css/main.bc696c8a.chunk.css.map",
+    "static/js/2.af1c3cf4.chunk.js.LICENSE.txt": "/static/js/2.af1c3cf4.chunk.js.LICENSE.txt",
+    "static/media/3ee810bac4391546ef3cba9ee60a9b9f.64eb4a72.jpeg": "/static/media/3ee810bac4391546ef3cba9ee60a9b9f.64eb4a72.jpeg",
+    "static/media/style.css": "/static/media/electricity-3442835__340.45223fe8.jpg",
+    "static/media/konbg.6a6667d0.png": "/static/media/konbg.6a6667d0.png",
+    "static/media/project1.9df46640.png": "/static/media/project1.9df46640.png",
+    "static/media/project3.1d344a2d.png": "/static/media/project3.1d344a2d.png",
+    "static/media/project4.1d5ce35a.jpeg": "/static/media/project4.1d5ce35a.jpeg",
+    "static/media/home.css": "/static/media/tranfarent-bg.148a53c1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.69f103b6.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.af1c3cf4.chunk.js",
+    "static/css/main.bc696c8a.chunk.css",
+    "static/js/main.04d77641.chunk.js"
+  ]
+}

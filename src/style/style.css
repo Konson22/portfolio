@@ -1,0 +1,311 @@
+@font-face {
+  font-family: "SignikaNegative";
+  src: url("../assets/fonts/SignikaNegative-Regular.ttf");
+}
+@font-face {
+  font-family: "Binjay";
+  src: url("../assets/fonts/Southmore.ttf");
+}
+:root {
+  --primary:rgb(255, 153, 0);
+  --secondary:rgb(22, 24, 32);
+  --dark:rgb(56, 56, 56);
+  --light_dark:rgb(63, 63, 63);
+  --white:rgb(255, 255, 255);
+}
+
+body {
+  scroll-behavior: smooth;
+  color: var(--white);
+  background-color: rgb(41, 41, 41);
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-family: "SignikaNegative";
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+}
+
+.elips-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.elips-text.l2 {
+  -webkit-line-clamp: 2;
+}
+
+.elips-text.l3 {
+  -webkit-line-clamp: 3;
+}
+
+.app-wraper {
+  padding: 0.5rem;
+}
+.app-wraper .app-sidebar {
+  padding: 0 2.5rem;
+  flex-basis: 25%;
+  background-color: var(--dark);
+}
+.app-wraper .app-sidebar .address-box strong, .app-wraper .app-sidebar .address-box span {
+  text-align: left;
+  flex: 1;
+}
+.app-wraper .app-sidebar .app-sidebar-content {
+  padding: 2rem 0;
+  border-top: 4px solid var(--light_dark);
+}
+.app-wraper .app-sidebar .lang-box {
+  width: 70px;
+  height: 70px;
+  border: 4px solid var(--primary);
+}
+.app-wraper .app-sidebar .skill-box {
+  margin-bottom: 0.6rem;
+}
+.app-wraper .app-sidebar .skill-box span {
+  margin-bottom: 0.3rem;
+  display: block;
+}
+.app-wraper .app-sidebar .skill-box .skill-fill {
+  height: 6px;
+  background-color: var(--primary);
+}
+.app-wraper .app-sidebar .skill-box .skill-fill.html {
+  width: 100%;
+}
+.app-wraper .app-sidebar .skill-box .skill-fill.css {
+  width: 100%;
+}
+.app-wraper .app-sidebar .skill-box .skill-fill.js {
+  width: 99%;
+}
+.app-wraper .app-sidebar .skill-box .skill-fill.react {
+  width: 97%;
+}
+.app-wraper .app-sidebar .social-media-wraper .socail-media-box {
+  font-size: 2rem;
+}
+.app-wraper .app-content {
+  margin-left: 1rem;
+  flex: 1;
+  min-height: calc(100vh - 4rem);
+}
+
+.about-wraper {
+  padding: 2rem 0;
+}
+.about-wraper .sidebar-image {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--primary);
+}
+
+.section-wraper {
+  margin-top: 2.5rem;
+}
+
+.heading-title {
+  margin-bottom: 1rem;
+}
+
+.my-btn {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.footer-wraper {
+  padding: 1rem 0;
+  color: var(--white);
+}
+.footer-wraper .testimonial-wraper {
+  margin-bottom: 1rem;
+  height: 200px;
+  background-color: var(--dark);
+}
+.footer-wraper .form-wraper {
+  padding: 2rem;
+  background-image: linear-gradient(to right, rgba(56, 56, 56, 0.5), rgba(56, 56, 56, 0.474)), url("../assets/images/electricity-3442835__340.jpg");
+  background-size: 100% 100%;
+}
+.footer-wraper .form-body, .footer-wraper .form-text {
+  padding: 2.5rem;
+  flex: 1;
+  color: var(--white);
+}
+.footer-wraper .form-body {
+  background: rgba(0, 0, 0, 0.7);
+}
+.footer-wraper .input-wraper {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--white);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.footer-wraper .input-wraper input, .footer-wraper .input-wraper textarea {
+  padding: 0 0.5rem;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.footer-wraper .input-wraper input {
+  height: 3rem;
+}
+.footer-wraper .input-wraper textarea {
+  height: 6rem;
+}
+
+.sm-screen {
+  display: none;
+}
+
+@media screen and (max-width: 950px) {
+  h4 {
+    font-size: 1rem;
+  }
+
+  .lg-screen {
+    display: none;
+  }
+
+  .sm-screen {
+    display: block;
+  }
+
+  .app-wraper {
+    padding: 0;
+    width: 100%;
+    flex-direction: column;
+  }
+  .app-wraper .app-sidebar {
+    padding: 0 2.5rem;
+    flex-basis: 25%;
+    background-color: var(--dark);
+  }
+  .app-wraper .app-sidebar .app-sidebar-header {
+    padding: 2rem 0;
+  }
+  .app-wraper .app-sidebar .app-sidebar-header .sidebar-image {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary);
+  }
+  .app-wraper .app-sidebar .address-box strong, .app-wraper .app-sidebar .address-box span {
+    text-align: left;
+    flex: 1;
+  }
+  .app-wraper .app-sidebar .app-sidebar-content {
+    padding: 2rem 0;
+    border-top: 4px solid var(--light_dark);
+  }
+  .app-wraper .app-sidebar .lang-box {
+    width: 70px;
+    height: 70px;
+    border: 4px solid var(--primary);
+  }
+  .app-wraper .app-sidebar .skill-box {
+    margin-bottom: 0.6rem;
+  }
+  .app-wraper .app-sidebar .skill-box span {
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  .app-wraper .app-sidebar .skill-box .skill-fill {
+    height: 6px;
+    background-color: var(--primary);
+  }
+  .app-wraper .app-sidebar .skill-box .skill-fill.html {
+    width: 100%;
+  }
+  .app-wraper .app-sidebar .skill-box .skill-fill.css {
+    width: 100%;
+  }
+  .app-wraper .app-sidebar .skill-box .skill-fill.js {
+    width: 99%;
+  }
+  .app-wraper .app-sidebar .skill-box .skill-fill.react {
+    width: 97%;
+  }
+  .app-wraper .app-sidebar .social-media-wraper .socail-media-box {
+    font-size: 2rem;
+  }
+  .app-wraper .app-content {
+    margin: 0;
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - 4rem);
+  }
+
+  .about-wraper {
+    margin: 0.5rem;
+    padding: 1rem;
+    background-color: var(--light_dark);
+  }
+  .about-wraper .sidebar-image {
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary);
+  }
+
+  .section-wraper {
+    padding: 1rem 0.5rem;
+    margin: 1rem 0.5rem;
+    background-color: var(--dark);
+  }
+
+  .footer-wraper {
+    padding: 1rem 0;
+  }
+  .footer-wraper .form-wraper {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .footer-wraper .form-body, .footer-wraper .form-text {
+    padding: 1rem;
+  }
+  .footer-wraper .form-body {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .footer-wraper .input-wraper {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .footer-wraper .input-wraper input, .footer-wraper .input-wraper textarea {
+    padding: 0 0.5rem;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+  }
+  .footer-wraper .input-wraper input {
+    height: 3rem;
+  }
+  .footer-wraper .input-wraper textarea {
+    height: 6rem;
+  }
+}/*# sourceMappingURL=style.css.map */
