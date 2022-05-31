@@ -13,7 +13,7 @@ export default function Navbar() {
         <div class="links-wraper lg-screen">
             <ul class="nav">
                 <li class="nav-items">
-                    <a href="http://localhost:3000/#" class="nav-link" rel="noreferrer" >Home</a>
+                    <a href="/#" class="nav-link" rel="noreferrer" >Home</a>
                 </li>
                 <li class="nav-items">
                     <a href="#about" class="nav-link" rel="noreferrer" >About Me</a>
