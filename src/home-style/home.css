@@ -1,0 +1,316 @@
+/*----------------------------------------------------------------- 
+    THE START OF HEADER
+----------------------------------------------------------------- */
+.header-wraper {
+  padding: 2rem;
+  height: 50vh;
+  color: var(--white);
+  position: relative;
+}
+.header-wraper .hero-wraper {
+  width: 63%;
+}
+.header-wraper .hero-image {
+  flex: 1;
+  height: 50vh;
+  background-image: url("../assets/images/tranfarent-bg.png");
+  background-size: 100% 100%;
+}
+.header-wraper h1 {
+  font-size: 3.5rem;
+  background-image: var(--gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.header-wraper button, .header-wraper a {
+  margin-right: 0.5rem;
+}
+.header-wraper .background {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(to right, rgba(56, 56, 56, 0.9), rgba(56, 56, 56, 0.74)), url("../assets/images/electricity-3442835__340.jpg");
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/*----------------------------------------------------------------- 
+    THE END OF EXPREIENCE
+----------------------------------------------------------------- */
+.experience-content {
+  margin: 0.9rem 0;
+  padding: 1rem;
+  background-color: var(--light_dark);
+}
+.experience-content .experience-box span {
+  margin-left: 0.6rem;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.experience-content .experience-box h4 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/*----------------------------------------------------------------- 
+    THE END OF SERVICES
+----------------------------------------------------------------- */
+.section-wraper.my-services {
+  padding: 2rem 1rem;
+  background-color: var(--light_dark);
+}
+.section-wraper.my-services .services-content {
+  padding: 1rem;
+  flex-basis: 40%;
+  display: grid;
+  grid-gap: 2vmin;
+  grid-template-columns: repeat(2, 1fr);
+}
+.section-wraper.my-services .services-text {
+  padding: 2rem;
+  flex: 1;
+}
+.section-wraper.my-services .services-text h1 {
+  font-size: 3rem;
+}
+.section-wraper.my-services .service-image-wraper {
+  padding: 1rem;
+  background-image: var(--light_gradient);
+  border-radius: 8px;
+}
+.section-wraper.my-services .service-image-wraper .service-image {
+  margin: 0 auto;
+  width: 70%;
+  height: 100px;
+}
+.section-wraper.my-services .service-image-wraper p {
+  margin-top: 0.5rem;
+  font-weight: 700;
+}
+.section-wraper.my-services .services-wraper {
+  display: grid;
+  grid-gap: 2vmin;
+  grid-template-columns: repeat(3, 1fr);
+}
+.section-wraper.my-services button {
+  margin-right: 0.6rem;
+}
+
+.section-wraper.technologies .technologies-wraper {
+  margin: 0 auto;
+  width: 70%;
+}
+.section-wraper.technologies .technologies-nav {
+  padding: 0.5rem 0;
+}
+.section-wraper.technologies .technologies-nav .technologies-nav-link {
+  margin-right: 0.5rem;
+  padding: 0.4rem;
+  color: inherit;
+  font-size: 1rem;
+}
+.section-wraper.technologies .technologies-nav .technologies-nav-link.active {
+  background-color: rgb(9, 150, 197);
+}
+.section-wraper.technologies .technologies-content {
+  display: grid;
+  grid-gap: 3vmin;
+  grid-template-columns: repeat(5, 1fr);
+}
+.section-wraper.technologies .technology-card {
+  padding: 1rem;
+  border-radius: 6px;
+  background-image: var(--light_gradient);
+}
+.section-wraper.technologies .language-content .language-card {
+  margin-right: 1rem;
+  text-align: center;
+}
+.section-wraper.technologies .language-content .language-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: var(--light_gradient);
+}
+.section-wraper.technologies .icon {
+  margin: 0.7rem;
+  font-size: 3rem;
+}
+
+/*----------------------------------------------------------------- 
+    THE END OF PROJECTS
+----------------------------------------------------------------- */
+.section-wraper.projects .project-eading-text {
+  margin: 0 auto;
+  width: 50%;
+}
+.section-wraper.projects .projects-wraper {
+  display: grid;
+  grid-gap: 2vmin;
+  grid-template-columns: repeat(2, 1fr);
+}
+.section-wraper.projects .project-card {
+  border-radius: 5px;
+}
+.section-wraper.projects .project-image {
+  height: 270px;
+  width: 100%;
+  background-image: var(--light_gradient);
+}
+.section-wraper.projects .project-text {
+  padding: 1rem;
+  background-color: rgb(85, 85, 85);
+}
+.section-wraper.projects button {
+  margin-right: 0.5rem;
+  border: 1px solid var(--white);
+}
+
+@media screen and (max-width: 950px) {
+  .app-sidebar {
+    display: none;
+  }
+
+  /*----------------------------------------------------------------- 
+      THE START OF HEADER
+  ----------------------------------------------------------------- */
+  .header-wraper {
+    padding: 2rem 1rem;
+    height: auto;
+  }
+  .header-wraper .hero-wraper {
+    width: 100%;
+  }
+  .header-wraper h1 {
+    font-size: 2.5rem;
+    color: var(--white);
+  }
+  .header-wraper .h5 {
+    font-size: 1.1rem;
+    font-weight: 200;
+  }
+  .header-wraper .background {
+    height: 100%;
+    width: 100%;
+  }
+
+  /*----------------------------------------------------------------- 
+      THE END OF EXPREIENCE
+  ----------------------------------------------------------------- */
+  .experience-content {
+    margin: 1rem 0.5rem 0 0.5rem;
+    padding: 1rem 0.5rem;
+    background-color: var(--light_dark);
+  }
+  .experience-content .experience-box {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .experience-content .experience-box span {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 100;
+    text-align: center !important;
+  }
+  .experience-content .experience-box h4 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 100;
+  }
+
+  .section-wraper.my-services {
+    padding: 0rem;
+    flex-direction: column;
+  }
+  .section-wraper.my-services .services-content {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section-wraper.my-services .services-text {
+    flex: 1;
+    padding: 1rem;
+  }
+  .section-wraper.my-services .services-text h1 {
+    font-size: 1.5rem;
+  }
+  .section-wraper.my-services .service-image-wraper {
+    padding: 1rem;
+  }
+  .section-wraper.my-services .service-image-wraper .service-image {
+    width: 90%;
+    height: 100px;
+  }
+
+  /*----------------------------------------------------------------- 
+      THE END OF SERVICES
+  ----------------------------------------------------------------- */
+  .section-wraper.services .services-wraper {
+    grid-gap: 5vmin;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .section-wraper.services .service-card {
+    background-color: var(--dark);
+  }
+
+  /*----------------------------------------------------------------- 
+      THE END OF PROJECTS
+  ----------------------------------------------------------------- */
+  .section-wraper.technologies .technologies-wraper {
+    width: 100%;
+  }
+  .section-wraper.technologies .technologies-content {
+    grid-gap: 3vmin;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .section-wraper.technologies .technology-card {
+    padding: 0.5rem 0;
+    border-radius: 6px;
+    background-image: var(--light_gradient);
+  }
+  .section-wraper.technologies .language-content {
+    justify-content: space-evenly;
+  }
+  .section-wraper.technologies .language-content .language-card {
+    margin: 0;
+  }
+  .section-wraper.technologies .language-content .language-image {
+    width: 70px;
+    height: 70px;
+  }
+  .section-wraper.technologies .icon {
+    margin: 0.7rem;
+    font-size: 2.4rem;
+  }
+
+  /*----------------------------------------------------------------- 
+      THE END OF PROJECTS
+  ----------------------------------------------------------------- */
+  .section-wraper.projects {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+  .section-wraper.projects .project-eading-text {
+    width: 100%;
+  }
+  .section-wraper.projects .projects-wraper {
+    grid-gap: 5vmin;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .section-wraper.projects .project-image {
+    height: 170px;
+  }
+  .section-wraper.projects .project-text {
+    padding: 0.6rem;
+  }
+  .section-wraper.projects button {
+    margin-right: 0.5rem;
+  }
+}/*# sourceMappingURL=home.css.map */

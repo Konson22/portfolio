@@ -4,6 +4,10 @@
     src: url('../assets/fonts/SignikaNegative-Regular.ttf');
 }
 @font-face {
+    font-family: 'SignikaNegative-Bold';
+    src: url('../assets/fonts/SignikaNegative-Bold.ttf');
+}
+@font-face {
     font-family: 'Binjay';
     src: url('../assets/fonts/Southmore.ttf');
 }
@@ -14,6 +18,8 @@
     --dark:rgb(56, 56, 56);
     --light_dark:rgb(63, 63, 63);
     --white:rgb(255, 255, 255);
+    --gradient:linear-gradient(to right, rgb(252, 87, 10), rgb(241, 20, 212));
+    --light_gradient:linear-gradient(140deg, rgb(163, 163, 163), rgb(141, 138, 138), rgb(78, 78, 78));
 }
 
 body{ 
@@ -21,11 +27,15 @@ body{
     color:var(--white);
     background-color: rgb(41, 41, 41);
     box-sizing: border-box;
+    font-size: 18px;
 }
 
 h1,h2,h3,h4,h5{
     margin: 0;
-    font-family: 'SignikaNegative';
+    font-family: 'SignikaNegative-Bold';
+}
+p{
+    margin: 0;
 }
 
 img{
@@ -54,11 +64,15 @@ img{
 
 //  start of globle style
 .app-wraper{
+    margin-top: 4rem;
     padding: .5rem;
     .app-sidebar{
         padding:0 2.5rem;
         flex-basis: 25%;
         background-color: var(--dark);
+        .app-sidebar-header{
+            border-bottom: 2px solid rgb(99, 99, 99);
+        }
         .address-box{
             strong, span{
                 text-align: left;
@@ -66,36 +80,28 @@ img{
             }
         }
         .app-sidebar-content{
-            padding: 2rem 0;
-            border-top: 4px solid var(--light_dark);
+            padding: 1rem 0;
+            border-bottom: 2px solid rgb(99, 99, 99);
         }
-        .lang-box{
-            width:70px;
-            height:70px;
-            border:4px solid var(--primary);
+        .lang-content{
+            text-align: center;
+            .lang-box{
+                margin-bottom: .5rem;
+                width:70px;
+                height:70px;
+                border-radius: 50%;
+                overflow: hidden;
+                border:1px solid var(--primary);
+            }
         }
-        .skill-box{
-            margin-bottom: .6rem;
-            span{
-                margin-bottom: .3rem;
-                display: block;
+        .tecnologies-wraper{
+            .tecnology-box{
+                margin: 0 .6rem;
+                font-size: 2rem;
             }
-            .skill-fill{
-                height:6px;
-                background-color: var(--primary);
-            }
-            .skill-fill.html{
-                width:100%;
-            }
-            .skill-fill.css{
-                width:100%;
-            }
-            .skill-fill.js{
-                width:99%;
-            }
-            .skill-fill.react{
-                width:97%;
-            }
+        }
+        .socail-media-box{
+            font-size: 2.1rem;
         }
         .social-media-wraper{
             .socail-media-box{
@@ -124,57 +130,74 @@ img{
 }
 
 .section-wraper{
-    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    padding: 3rem 1.5rem;
+    border-radius: 6px;
+    background-color: var(--light_dark);
 }
 .heading-title{
     margin-bottom: 1rem;
+    h2{
+        font-size: 3rem;
+        color: var(--white);
+    }
 }
+
+.rgba{
+    background-image:var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
 .my-btn{
-    padding:.3rem .5rem;
-    border: 1px solid var(--primary);
-    color: var(--primary);
-    background-color: transparent;
+    color: var(--white);
+    background-image: var(--light_gradient);
     text-decoration: none;
 }
 
+
+/*----------------------------------------------------------------- 
+    THE END OF FOOTER
+----------------------------------------------------------------- */
 .footer-wraper{
-    padding: 1rem 0;
-    color: var(--white);
-    .testimonial-wraper{
-        margin-bottom: 1rem;
-        height: 200px;
-        background-color: var(--dark);
-    }
+    background-image: url('../assets/images/651838.jpg');
+    background-size: 100% 100%;
+    padding:2rem;
     .form-wraper{
-        padding:2rem;
-        background-image: linear-gradient(to right, rgba(56, 56, 56, 0.5), rgba(56, 56, 56, 0.474)), url('../assets/images/electricity-3442835__340.jpg');
-        background-size: 100% 100%;
-    }
-    .form-body, .form-text{
-        padding:2.5rem;
-        flex:1;
-        color: var(--white);
-    }
-    .form-body{
-        background:rgba(0,0,0,0.7);
-    }
-    .input-wraper{
-        margin-bottom: 1.5rem;
-        border:1px solid var(--white);
-        border-radius: 5px;
-        overflow: hidden;
-        input, textarea{
-            padding: 0 .5rem;
+        .form-body, .form-text{
+            padding:2rem;
+            flex:1;
+            color: var(--white);
+        }
+        .form-body{
+            border-radius: 8px;
+            background-image: linear-gradient(140deg, rgba(255, 255, 255, 0.5), rgba(139, 139, 139, 0.5), rgba(34, 34, 34, 0.5));
+        }
+        .input-wraper{
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: var(--white);
+            input, textarea{
+                padding: .6rem;
+                width:100%;
+                border: none;
+                font-size: 1rem;
+            }
+            input{
+                height: 3rem;
+            }
+            textarea{
+                height: 6rem;
+            }
+        }
+         button{
             width:100%;
-            border: none;
-            background-color: transparent;
         }
-        input{
-            height: 3rem;
-        }
-        textarea{
-            height: 6rem;
-        }
+    }
+    form{
+        margin-top: 1rem;
     }
 }
 
@@ -192,6 +215,7 @@ img{
         display: block;
     }
     .app-wraper{
+        margin-bottom: 4rem;
         padding: 0;
         width:100%;
         flex-direction: column;
@@ -263,7 +287,8 @@ img{
     }
     .about-wraper{
         margin: .5rem;
-        padding: 1rem;
+        padding: 2rem 1rem;
+        border-radius: 6px;
         background-color: var(--light_dark);
         .sidebar-image{
             margin: 0 auto;
@@ -277,34 +302,37 @@ img{
     .section-wraper{
         padding: 1rem .5rem;
         margin: 1rem .5rem;
-        background-color: var(--dark);
+        // background-color: var(--dark);
+    }
+    .heading-title{
+        margin-bottom: 1rem;
+        h2{
+            font-size: 2rem;
+        }
     }
 
     .footer-wraper{
-        padding: 1rem 0;
+        padding: 0;
+        background-image: 
+            linear-gradient(140deg, rgba(255, 255, 255, 0.5), rgba(139, 139, 139, 0.5), rgba(34, 34, 34, 0.5)), url('../assets/images/651838.jpg');
         .form-wraper{
-            padding:1rem;
+            padding:0 1rem;
             flex-direction: column;
+            background: rgba(0, 0, 0, 0.5);
         }
         .form-body, .form-text{
-            padding:1rem;
-        }
-        .form-body{
-            background:rgba(0,0,0,0.7);
+            padding:2rem 1rem !important;
         }
         .input-wraper{
-            margin-bottom: 1.5rem;
-            border:1px solid var(--white);
-            border-radius: 5px;
-            overflow: hidden;
+            width:100%;
+            margin-bottom: 1rem;
             input, textarea{
                 padding: 0 .5rem;
                 width:100%;
-                border: none;
-                background-color: transparent;
             }
             input{
-                height: 3rem;
+                height: 2.5rem !important;
+                font-size: .8rem;
             }
             textarea{
                 height: 6rem;
