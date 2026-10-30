@@ -23,3 +23,17 @@ dist-server
 *.njsproj
 *.sln
 *.sw?
+
+# Laravel
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+/.phpunit.cache
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+/bootstrap/ssr

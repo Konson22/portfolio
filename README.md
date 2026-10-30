@@ -380,3 +380,51 @@ I am interested in opportunities and collaborations involving **IT engineering, 
 **Location:** Juba, South Sudan
 
 **CTA:** Get in Touch
+---
+
+# RUNNING THE SITE
+
+The site is a Laravel app with a React front end served through Inertia.js. Page content lives in `resources/js/data/content.js`; the pages are in `resources/js/Pages`.
+
+## Local development
+
+```sh
+composer install
+npm install
+cp .env.example .env   # then set APP_ENV=local, APP_DEBUG=true, APP_URL=http://localhost:8000, MAIL_MAILER=log
+php artisan key:generate
+npm run dev:all        # Laravel on http://localhost:8000 plus the Vite dev server
+php artisan test
+```
+
+With `MAIL_MAILER=log`, contact form messages are written to `storage/logs/laravel.log` instead of being sent.
+
+## Contact form email
+
+The form posts to `/contact` (`app/Http/Controllers/ContactController.php`), which sends the message with Laravel Mail over SMTP. No third-party email API is used. Set the mailbox from your hosting in `.env`:
+
+```
+MAIL_MAILER=smtp
+MAIL_SCHEME=smtps
+MAIL_HOST=mail.konakech.com
+MAIL_PORT=465
+MAIL_USERNAME=hello@konakech.com
+MAIL_PASSWORD=your-mailbox-password
+MAIL_FROM_ADDRESS="hello@konakech.com"
+MAIL_CONTACT_TO="hello@konakech.com"
+```
+
+Messages are sent from `MAIL_FROM_ADDRESS` to `MAIL_CONTACT_TO`, with Reply-To set to the visitor. The form has a honeypot field against bots and allows 5 messages per visitor per hour.
+
+## Deployment
+
+```sh
+composer install --no-dev --optimize-autoloader
+npm ci && npm run build
+php artisan key:generate   # first deploy only
+php artisan config:cache && php artisan route:cache && php artisan view:cache
+```
+
+Point the web server's document root at `public/`. No database is needed.
+
+Optional, for SEO: run `php artisan inertia:start-ssr` as a long-running process (e.g. with Supervisor) so pages are rendered on the server with their own titles and meta tags. Without it the site still works; pages render in the browser and the server sends site-wide default meta tags.
