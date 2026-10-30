@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
 import { FiArrowUpRight } from 'react-icons/fi'
-import { nav, profile } from '../data/content'
+import { nav, navHref, profile } from '../data/content'
 import { Magnetic } from './ui'
 
 const ease = [0.76, 0, 0.24, 1]
@@ -37,7 +37,7 @@ export function Preloader({ onDone }) {
   )
 }
 
-export function Header() {
+export function Header({ home = true }) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { scrollYProgress } = useScroll()
@@ -56,20 +56,20 @@ export function Header() {
 
   return (
     <>
-      <motion.div className="fixed inset-x-0 top-0 z-[70] h-0.5 origin-left bg-accent" style={{ scaleX: progress }} />
+      <motion.div className="fixed inset-x-0 top-0 z-[70] h-0.5 print:hiddenorigin-left bg-accent" style={{ scaleX: progress }} />
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-all print:hidden duration-500 ${
           scrolled && !open ? 'bg-ink/80 py-3 backdrop-blur-md' : 'py-6'
         }`}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-4 md:px-10">
-          <a href="#top" className="font-display text-xl font-extrabold tracking-tight" onClick={() => setOpen(false)}>
+          <a href={home ? '#top' : '/'} className="font-display text-xl font-extrabold tracking-tight" onClick={() => setOpen(false)}>
             KON<span className="text-accent">.</span>AKECH
           </a>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-6 xl:flex 2xl:gap-8">
             {nav.map((n) => (
-              <a key={n.href} href={n.href} className="group relative text-sm font-medium text-paper/80 hover:text-paper">
+              <a key={n.href} href={navHref(n.href, home)} className="group relative text-sm font-medium text-paper/80 hover:text-paper">
                 {n.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
               </a>
@@ -88,7 +88,7 @@ export function Header() {
             <button
               aria-label={open ? 'Close menu' : 'Open menu'}
               onClick={() => setOpen((o) => !o)}
-              className="relative z-[80] grid size-12 place-items-center rounded-full border border-line bg-panel lg:hidden"
+              className="relative z-[80] grid size-12 place-items-center rounded-full border border-line bg-panel xl:hidden"
             >
               <span className={`absolute h-0.5 w-5 bg-paper transition-transform duration-300 ${open ? 'rotate-45' : '-translate-y-1'}`} />
               <span className={`absolute h-0.5 w-5 bg-paper transition-transform duration-300 ${open ? '-rotate-45' : 'translate-y-1'}`} />
@@ -100,7 +100,7 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[45] flex flex-col justify-between bg-panel px-4 pb-10 pt-28 md:px-10"
+            className="fixed inset-0 z-[45] flex flex-col justify-between gap-8 overflow-y-auto bg-panel px-4 pb-10 pt-28 md:px-10"
             initial={{ clipPath: 'circle(0% at 100% 0%)' }}
             animate={{ clipPath: 'circle(150% at 100% 0%)' }}
             exit={{ clipPath: 'circle(0% at 100% 0%)' }}
@@ -110,7 +110,7 @@ export function Header() {
               {nav.map((n, i) => (
                 <motion.a
                   key={n.href}
-                  href={n.href}
+                  href={navHref(n.href, home)}
                   onClick={() => setOpen(false)}
                   initial={{ opacity: 0, x: 40 }}
                   animate={{ opacity: 1, x: 0 }}

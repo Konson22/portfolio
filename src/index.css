@@ -62,3 +62,11 @@ body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* The CV and application letter print as plain documents: white page, no site chrome. */
+@page { size: A4; margin: 16mm; }
+
+@media print {
+  body { background: #fff; }
+  .grain::after { display: none; }
+}

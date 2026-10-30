@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FiArrowUpRight, FiMail, FiMapPin, FiPhone, FiArrowUp } from 'react-icons/fi'
-import { nav, profile } from '../data/content'
+import { nav, navHref, profile } from '../data/content'
 import { Magnetic, Marquee, Reveal, SectionLabel, SplitText } from './ui'
 
 const container = 'mx-auto max-w-[1400px] px-4 md:px-10'
@@ -28,7 +28,7 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="pt-24 md:pt-36">
+    <section id="contact" className="pt-24 md:pt-36 print:hidden">
       <div className="border-y border-line py-8 font-display text-6xl font-extrabold uppercase md:text-9xl">
         <Marquee items={['Get in Touch', 'Let’s Connect']} separator="✺" />
       </div>
@@ -63,6 +63,9 @@ export function Contact() {
               )
             })}
           </div>
+          <a href="/cv/" className="mt-8 inline-flex items-center gap-2 font-semibold text-accent hover:text-paper">
+            View my CV <FiArrowUpRight />
+          </a>
         </div>
 
         <Reveal delay={0.1}>
@@ -87,17 +90,17 @@ export function Contact() {
   )
 }
 
-export function Footer() {
+export function Footer({ home = true }) {
   return (
-    <footer className="border-t border-line">
+    <footer className="border-t border-line print:hidden">
       <div className={`${container} py-14`}>
         <div className="flex flex-wrap items-center justify-between gap-8">
-          <a href="#top" className="font-display text-2xl font-extrabold sm:text-3xl">
+          <a href={home ? '#top' : '/'} className="font-display text-2xl font-extrabold sm:text-3xl">
             KON<span className="text-accent">.</span>AKECH
           </a>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted">
             {nav.map((n) => (
-              <a key={n.href} href={n.href} className="inline-block py-2 hover:text-accent">
+              <a key={n.href} href={navHref(n.href, home)} className="inline-block py-2 hover:text-accent">
                 {n.label}
               </a>
             ))}

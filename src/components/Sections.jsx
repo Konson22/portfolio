@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { FiArrowUpRight, FiCheck, FiPlus } from 'react-icons/fi'
-import { about, education, experience, focus, approach, services, skills, work } from '../data/content'
+import { about, capabilities, education, experience, focus, approach, services, skills, work } from '../data/content'
 import { Counter, Reveal, SectionLabel, SplitText } from './ui'
 
 const ease = [0.22, 1, 0.36, 1]
@@ -15,16 +15,17 @@ export function About() {
 
   return (
     <section id="about" ref={ref} className={`${container} py-24 md:py-36`}>
-      <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr]">
-        <div>
-          <SectionLabel>About me</SectionLabel>
-          <div className="relative mt-10 aspect-square max-w-md overflow-hidden rounded-[2rem] border border-line bg-panel">
+      <SectionLabel>About me</SectionLabel>
+      <div className="mt-10 grid gap-14 lg:grid-cols-[1fr_1.4fr]">
+        <div className="flex flex-col">
+          {/* On desktop the photo stretches to the height of the text column beside it. */}
+          <div className="relative aspect-square max-w-md overflow-hidden rounded-[2rem] border border-line bg-panel lg:aspect-auto lg:max-w-none lg:flex-1">
             <motion.div style={{ rotate }} className="absolute inset-[-20%] bg-[conic-gradient(from_0deg,#d4ff3a,transparent_30%,#3a7bff_55%,transparent_75%,#d4ff3a)] opacity-40 blur-2xl" />
             <div className="group absolute inset-3 overflow-hidden rounded-[1.6rem] bg-ink">
               <img
                 src="/images/kon-1.webp"
                 srcSet="/images/kon-1-600.webp 600w, /images/kon-1.webp 1000w"
-                sizes="(min-width: 1024px) 448px, min(448px, 92vw)"
+                sizes="(min-width: 1024px) 540px, min(448px, 92vw)"
                 width={1000}
                 height={1000}
                 decoding="async"
@@ -48,15 +49,6 @@ export function About() {
               <p className="mt-6 text-lg leading-relaxed text-paper/70">{p}</p>
             </Reveal>
           ))}
-          <Reveal delay={0.2}>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {about.perspectives.map((p) => (
-                <span key={p} className="rounded-full border border-line px-4 py-2 text-sm">
-                  {p}
-                </span>
-              ))}
-            </div>
-          </Reveal>
           <div className="mt-14 grid grid-cols-3 gap-4 border-t border-line pt-10">
             {about.stats.map((s) => (
               <Reveal key={s.label}>
@@ -149,7 +141,8 @@ export function Services() {
 }
 
 /* ---------------- Featured work ---------------- */
-function WorkVisual({ index, hue }) {
+export function WorkVisual({ index, hue, image, title }) {
+  const [imageFailed, setImageFailed] = useState(false)
   // Abstract, per-project artwork so the grid feels like a portfolio without stock images.
   const shapes = [
     <div key="a" className="grid w-40 grid-cols-3 gap-3 sm:w-48">{Array.from({ length: 9 }).map((_, i) => <div key={i} className="aspect-square rounded-xl bg-white/25" style={{ opacity: 0.3 + ((i * 7) % 10) / 14 }} />)}</div>,
@@ -159,9 +152,51 @@ function WorkVisual({ index, hue }) {
   ]
   return (
     <div className={`relative grid aspect-[4/3] place-items-center overflow-hidden rounded-[1.6rem] bg-gradient-to-br ${hue}`}>
-      <div className="transition-transform duration-700 ease-out group-hover:scale-110 group-hover:-rotate-3">{shapes[index % shapes.length]}</div>
-      <span className="absolute left-5 top-5 font-display text-sm font-bold text-white/80">0{index + 1}</span>
+      {image && !imageFailed ? (
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+          onError={() => setImageFailed(true)}
+          className="absolute inset-0 size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+      ) : (
+        <div className="transition-transform duration-700 ease-out group-hover:scale-110 group-hover:-rotate-3">{shapes[index % shapes.length]}</div>
+      )}
+      <span className="absolute left-5 top-5 rounded-full bg-black/30 px-2.5 py-1 font-display text-sm font-bold text-white/90 backdrop-blur-sm">0{index + 1}</span>
     </div>
+  )
+}
+
+// Only the first few projects appear on the home page; the rest are on /work/.
+const featuredWork = work.slice(0, 4)
+
+export function WorkCard({ project: w, index }) {
+  return (
+    <a href={`/work/${w.slug}/`} className="group block" data-cursor>
+      <WorkVisual index={index} hue={w.hue} image={w.image} title={w.title} />
+      <div className="mt-6 flex items-start justify-between gap-6">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">{w.kicker}</p>
+          <h3 className="mt-3 font-display text-2xl font-bold leading-tight md:text-3xl">{w.title}</h3>
+        </div>
+        <span className="grid size-12 shrink-0 place-items-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:bg-accent group-hover:text-ink">
+          <FiArrowUpRight />
+        </span>
+      </div>
+      <p className="mt-4 line-clamp-3 leading-relaxed text-paper/65">{w.summary}</p>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {w.tags.map((t) => (
+          <span key={t} className="rounded-full bg-panel px-3 py-1 text-xs text-paper/80">
+            {t}
+          </span>
+        ))}
+      </div>
+      <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+        Read more <FiArrowUpRight className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </span>
+    </a>
   )
 }
 
@@ -177,34 +212,48 @@ export function Work() {
             <SplitText text="Projects" className="text-outline" delay={0.1} />
           </h2>
         </div>
-        <p className="max-w-sm text-muted">Systems built and supported for real organizations — utilities, enterprises, and field teams.</p>
+        <p className="max-w-sm text-muted">Systems built and supported for real organizations — utilities, dioceses, schools, and businesses.</p>
       </div>
 
       <div className="mt-16 grid gap-x-10 gap-y-16 md:grid-cols-2">
-        {work.map((w, i) => (
-          <Reveal key={w.title} delay={(i % 2) * 0.15} className={i % 2 ? 'md:mt-28' : ''}>
-            <article className="group" data-cursor>
-              <WorkVisual index={i} hue={w.hue} />
-              <div className="mt-6 flex items-start justify-between gap-6">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">{w.kicker}</p>
-                  <h3 className="mt-3 font-display text-2xl font-bold leading-tight md:text-3xl">{w.title}</h3>
-                </div>
-                <span className="grid size-12 shrink-0 place-items-center rounded-full border border-line transition-all duration-500 group-hover:rotate-45 group-hover:bg-accent group-hover:text-ink">
-                  <FiArrowUpRight />
-                </span>
-              </div>
-              <p className="mt-4 leading-relaxed text-paper/65">{w.summary}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {w.tags.map((t) => (
-                  <span key={t} className="rounded-full bg-panel px-3 py-1 text-xs text-paper/80">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </article>
+        {featuredWork.map((w, i) => (
+          <Reveal key={w.slug} delay={(i % 2) * 0.15} className={i % 2 ? 'md:mt-28' : ''}>
+            <WorkCard project={w} index={i} />
           </Reveal>
         ))}
+      </div>
+
+      <Reveal className="mt-16 flex justify-center md:mt-20">
+        <a
+          href="/work/"
+          className="inline-flex items-center gap-2 rounded-full border border-paper/30 px-7 py-4 font-bold transition-colors hover:border-accent hover:text-accent"
+        >
+          View all {work.length} projects <FiArrowUpRight />
+        </a>
+      </Reveal>
+
+      <div className="mt-24 md:mt-36">
+        <Reveal>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted">Core capabilities</p>
+        </Reveal>
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {capabilities.map((c, i) => (
+            <Reveal key={c.title} delay={i * 0.1}>
+              <article className="h-full rounded-[1.6rem] border border-line p-7 transition-colors duration-500 hover:border-accent/60 md:p-10">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">{c.kicker}</p>
+                <h3 className="mt-3 font-display text-2xl font-bold leading-tight">{c.title}</h3>
+                <p className="mt-4 leading-relaxed text-paper/65">{c.summary}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {c.tags.map((t) => (
+                    <span key={t} className="rounded-full bg-panel px-3 py-1 text-xs text-paper/80">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -237,7 +286,7 @@ export function Experience() {
                 loading="lazy"
                 className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-2xl bg-ink/75 px-4 py-3 backdrop-blur">
+              {/* <div className="absolute inset-x-4 bottom-4 flex items-center gap-3 rounded-2xl bg-ink/75 px-4 py-3 backdrop-blur">
                 <span className="relative flex size-2.5 shrink-0">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-75" />
                   <span className="relative inline-flex size-2.5 rounded-full bg-accent" />
@@ -246,7 +295,7 @@ export function Experience() {
                   <span className="block text-xs uppercase tracking-[0.2em] text-muted">Currently</span>
                   IT Engineer · JICA Water Supply Project
                 </span>
-              </div>
+              </div> */}
             </div>
             <p className="mt-6 max-w-xl text-muted lg:max-w-none">Enterprise IT, software leadership, and industrial operations — three perspectives on how technology must work.</p>
           </Reveal>
