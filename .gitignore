@@ -30,7 +30,6 @@ dist-server
 .env.production
 .phpunit.result.cache
 /.phpunit.cache
-/public/build
 /public/hot
 /public/storage
 /storage/*.key
